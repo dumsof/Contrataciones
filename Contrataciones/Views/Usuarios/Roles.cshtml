@@ -1,0 +1,42 @@
+﻿@model  Contrataciones.ModelsView.UsuarioVista
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles para el usuario:@Model.Name</h2>
+<input type="hidden" id="UserID" value="@Model.UserID" />
+<p>  
+    @Html.ActionLink("Regresar a lista Usuarios", "Index", new { }, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+
+    <tr>
+        <th>
+            Rol Asignado
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Roles)
+    {
+        <tr>
+            <td>
+                <input type="checkbox" id="chkRolAsignado" checked="@item.RolAsignado" value="@item.RoleID" />
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Borrar", "Borrar", new { userID = item.RoleID })
+            </td>
+        </tr>
+    }
+</table>
+@*agregar los scripts que estan en la ruta /Scripts/ScriptsUsuario/jsRolesVista.js*@
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ScriptUsuario")  

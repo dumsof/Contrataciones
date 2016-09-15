@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mensajes app="Estados de cuenta">
+  <!--mensajes que debe presentar la aplicación-->
+  <Mensaje codigo="NOMCAMP01">
+    <![CDATA[
+			Descripción
+		]]>
+  </Mensaje>
+  <Mensaje codigo="MC01">
+    <![CDATA[
+			Usted debe ingresar {0}
+		]]>
+  </Mensaje>
+  <!--Inicio seccion Titulos-->
+  <Mensaje codigo="MC02">
+    <![CDATA[
+			El campo {0} debe tener  entre {2} y {1} caracteres
+		]]>
+  </Mensaje>  
+  <!--Fin seccion Titulos-->
+</Mensajes>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mensajes app="Estados de cuenta">
+  <!--mensajes que debe presentar la aplicación-->
+  <Mensaje codigo="1">
+    <![CDATA[
+			No existe información.
+		]]>
+  </Mensaje>
+  <Mensaje codigo="2">
+    <![CDATA[
+			Esta es la prueba final para saber cual es el mensaje.
+		]]>
+  </Mensaje>
+  <!--Inicio seccion Titulos-->
+  <Mensaje codigo="201">
+    <![CDATA[
+			Resumen de  Estado de Cuenta
+		]]>
+  </Mensaje>
+  <Mensaje codigo="202">
+    <![CDATA[
+			Estado de Cuenta <br/> Consolidado para el Pagador
+		]]>
+  </Mensaje>
+  <Mensaje codigo="203">
+    <![CDATA[
+			Estado de Cuenta <br/> Consolidado para el Proveedor
+		]]>
+  </Mensaje>
+  <Mensaje codigo="204">
+    <![CDATA[
+			Estado de Cuenta por <br/> Producto Proveedor de Línea Triangular
+		]]>
+  </Mensaje>
+  <Mensaje codigo="205">
+    <![CDATA[
+			Estado de Cuenta Cliente de Línea Triangular
+		]]>
+  </Mensaje>
+  <Mensaje codigo="206">
+    <![CDATA[
+			Estado de Cuenta por Producto Pagador de Confirming
+		]]>
+  </Mensaje>
+  <Mensaje codigo="207">
+    <![CDATA[
+			Estado de Cuenta por Producto Proveedor de Confirming
+		]]>
+  </Mensaje>
+  <Mensaje codigo="208">
+    <![CDATA[
+			Estado de Cuenta por Producto Pagador de Plus
+		]]>
+  </Mensaje>
+  <Mensaje codigo="209">
+    <![CDATA[
+			Estado de Cuenta por Producto Proveedor de Plus
+		]]>
+  </Mensaje>
+  <Mensaje codigo="210">
+    <![CDATA[
+			Estado de Cuenta por Producto Proveedor Factoring de Exportación
+		]]>
+  </Mensaje>
+  <Mensaje codigo="211">
+    <![CDATA[
+			Estado de Cuenta Línea Directa
+		]]>
+  </Mensaje>
+  <Mensaje codigo="212">
+    <![CDATA[
+			Estado de Cuenta Línea Empresarial
+		]]>
+  </Mensaje>
+  <!--Fin seccion Titulos-->
+</Mensajes>
