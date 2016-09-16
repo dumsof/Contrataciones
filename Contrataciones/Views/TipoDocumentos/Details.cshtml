@@ -1,0 +1,26 @@
+﻿@model Contrataciones.Models.TipoDocumentos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoDocumentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionDocumento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TipoDocumentoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

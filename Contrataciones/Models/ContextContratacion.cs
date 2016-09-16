@@ -22,8 +22,12 @@ namespace Contrataciones.Models
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
-        public System.Data.Entity.DbSet<Contrataciones.Models.Empleados> Empleados { get; set; }
+      
 
         public System.Data.Entity.DbSet<Contrataciones.Models.Cargos> Cargos { get; set; }
+
+        public System.Data.Entity.DbSet<Contrataciones.Models.TipoDocumentos> TipoDocumentos { get; set; }
+
+        public System.Data.Entity.DbSet<Contrataciones.Models.Empleados> Empleados { get; set; }
     }
 }
