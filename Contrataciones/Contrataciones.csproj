@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -312,6 +313,11 @@
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Roles.cshtml" />
     <Content Include="Views\Shared\_PartialMenu.cshtml" />
+    <Content Include="Views\Cargos\Create.cshtml" />
+    <Content Include="Views\Cargos\Delete.cshtml" />
+    <Content Include="Views\Cargos\Details.cshtml" />
+    <Content Include="Views\Cargos\Edit.cshtml" />
+    <Content Include="Views\Cargos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
