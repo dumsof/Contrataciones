@@ -1,0 +1,72 @@
+﻿@model Contrataciones.Models.Contratos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Contratos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.NumeroDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.NumeroDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisponibilidadPresupuestalCDP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisponibilidadPresupuestalCDP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompromisoPresupuestalRP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompromisoPresupuestalRP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

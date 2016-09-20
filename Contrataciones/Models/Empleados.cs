@@ -64,5 +64,8 @@ namespace Contrataciones.Models
         [StringLength(200, ErrorMessage = "El campo {0} debe tener  entre {2} y {1} caracteres", MinimumLength = 3)]
         public string Email { get; set; }
 
+
+        public virtual ICollection<Contratos> Contratos { get; set; }
+
     }
 }

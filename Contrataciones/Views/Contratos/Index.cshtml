@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Contrataciones.Models.Contratos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.NumeroDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisponibilidadPresupuestalCDP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompromisoPresupuestalRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorContrato)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.NumeroDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisponibilidadPresupuestalCDP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompromisoPresupuestalRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorContrato)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ContratoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ContratoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ContratoID })
+        </td>
+    </tr>
+}
+
+</table>

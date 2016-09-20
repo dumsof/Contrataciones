@@ -1,0 +1,66 @@
+﻿@model Contrataciones.Models.Contratos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contratos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.NumeroDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.NumeroDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisponibilidadPresupuestalCDP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisponibilidadPresupuestalCDP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompromisoPresupuestalRP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompromisoPresupuestalRP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContratoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -29,5 +29,7 @@ namespace Contrataciones.Models
         public System.Data.Entity.DbSet<Contrataciones.Models.TipoDocumentos> TipoDocumentos { get; set; }
 
         public System.Data.Entity.DbSet<Contrataciones.Models.Empleados> Empleados { get; set; }
+
+        public System.Data.Entity.DbSet<Contrataciones.Models.Contratos> Contratos { get; set; }
     }
 }
