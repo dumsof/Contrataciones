@@ -219,6 +219,8 @@
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\SubMenuOperacionesController.cs" />
     <Compile Include="Controllers\TipoDocumentosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\Utilidades\SessionHelper.cs" />
@@ -237,6 +239,8 @@
     <Compile Include="Models\Empleados.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Menus.cs" />
+    <Compile Include="Models\SubMenuOperaciones.cs" />
     <Compile Include="Models\TipoDocumentos.cs" />
     <Compile Include="Permisos\EnumeracionesPermisos.cs" />
     <Compile Include="Permisos\PermisoAttribute.cs" />
@@ -270,6 +274,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ScriptsUsuario\jsPartialMenu.js" />
     <Content Include="Scripts\ScriptsUsuario\jsRolesVista.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -331,8 +336,20 @@
     <Content Include="Views\Contratos\Details.cshtml" />
     <Content Include="Views\Contratos\Edit.cshtml" />
     <Content Include="Views\Contratos\Index.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\SubMenuOperaciones\Create.cshtml" />
+    <Content Include="Views\SubMenuOperaciones\Delete.cshtml" />
+    <Content Include="Views\SubMenuOperaciones\Details.cshtml" />
+    <Content Include="Views\SubMenuOperaciones\Edit.cshtml" />
+    <Content Include="Views\SubMenuOperaciones\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Menu\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

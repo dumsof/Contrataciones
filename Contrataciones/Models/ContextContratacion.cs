@@ -31,5 +31,9 @@ namespace Contrataciones.Models
         public System.Data.Entity.DbSet<Contrataciones.Models.Empleados> Empleados { get; set; }
 
         public System.Data.Entity.DbSet<Contrataciones.Models.Contratos> Contratos { get; set; }
+
+        public System.Data.Entity.DbSet<Contrataciones.Models.Menus> Menus { get; set; }
+
+        public System.Data.Entity.DbSet<Contrataciones.Models.SubMenuOperaciones> SubMenuOperaciones { get; set; }
     }
 }

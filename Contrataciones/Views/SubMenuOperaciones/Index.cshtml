@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Contrataciones.Models.SubMenuOperaciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Menus.DescripcionMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EsSubMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionOperacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Controlador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenamientoSubMenu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Menus.DescripcionMenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EsSubMenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionOperacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Controlador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Accion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdenamientoSubMenu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubMenuOperacionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubMenuOperacionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubMenuOperacionID })
+        </td>
+    </tr>
+}
+
+</table>

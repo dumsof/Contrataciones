@@ -18,6 +18,8 @@ namespace Contrataciones
             //-----------------------------------
             bundles.Add(new ScriptBundle("~/bundles/ScriptUsuario").Include(
                        "~/Scripts/ScriptsUsuario/jsRolesVista.js"));
+            bundles.Add(new ScriptBundle("~/bundles/PartialMenu").Include(
+                       "~/Scripts/ScriptsUsuario/jsPartialMenu.js"));
             //-----------------------------------
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
