@@ -219,6 +219,7 @@
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuDinamicoController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\SubMenuOperacionesController.cs" />
     <Compile Include="Controllers\TipoDocumentosController.cs" />
@@ -230,7 +231,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelsView\MenuVista.cs" />
     <Compile Include="ModelsView\RolesVista.cs" />
+    <Compile Include="ModelsView\SubMenuOperacionesVista.cs" />
     <Compile Include="ModelsView\UsuarioVista.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cargos.cs" />
@@ -263,6 +266,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\ColegioMayor.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -348,6 +352,7 @@
     <Content Include="Views\SubMenuOperaciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\MenuDinamico\" />
     <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
