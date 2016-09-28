@@ -24,5 +24,6 @@ namespace Contrataciones.ModelsView
 
 
         public int Ordenamiento { get; set; }
+        public string Url { get; set; }
     }
 }

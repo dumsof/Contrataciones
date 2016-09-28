@@ -20,6 +20,8 @@ namespace Contrataciones.Controllers
         {
             ContextContratacion cnx = new ContextContratacion();
 
+            string url = Request.Url.ToString();
+
             //se crean modelos auxiliares para solucionar el error de referencia circular.
             //que se produce cuando dos modelos estan relacionados.
             var listMenu = from m in cnx.Menus
@@ -29,7 +31,8 @@ namespace Contrataciones.Controllers
                                DescripcionMenu = m.DescripcionMenu,
                                Controlador = m.Controlador,
                                Accion = m.Accion,
-                               SubMenuOperacion = (from subM in m.SubMenuOperaciones
+                               Url = url,
+                               SubMenuOperacion = (from subM in m.SubMenuOperaciones.Where(c=> c.EsSubMenu)
                                                    select new SubMenuOperacionesVista
                                                    {
                                                        DescripcionOperacion = subM.DescripcionOperacion,
@@ -46,7 +49,7 @@ namespace Contrataciones.Controllers
                 Data = listMenu.ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-           
+
         }
     }
 }

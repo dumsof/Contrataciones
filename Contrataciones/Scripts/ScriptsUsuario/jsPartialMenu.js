@@ -1,12 +1,10 @@
-﻿$(function () {
-    console.log("ready!");
-    var menu = localStorage.getItem('menu');
-    if (menu != null && menu.length > 0) {
-        $("#menuPrincipal").append(menu);
-    } else {
-        GenerarMenu();
-    }
-
+﻿$(function () {    
+    //var menu = sessionStorage.getItem('menu');
+    //if (menu != null && menu.length > 0) {
+    //    $("#menuPrincipal").append(menu);
+    //} else {
+    //    GenerarMenu();
+    //}
 });
 
 function GenerarMenu() {
@@ -19,19 +17,21 @@ function GenerarMenu() {
         success: function (dataMenu) {
             var n = 0;
             var strMenuTodo = '';
+            var url = '';
             $.each(dataMenu, function (id, itemMenu) {
-                console.log("Item Menu :" + itemMenu.DescripcionMenu);
+                if (url.length <= 0) {
+                    url = ObtenerUrl(itemMenu.Url);
+                }               
                 if (itemMenu.SubMenuOperacion != null && itemMenu.SubMenuOperacion.length > 0) {
-                    strMenuTodo += CrearSubMenu(itemMenu.DescripcionMenu, itemMenu.SubMenuOperacion);
+                    strMenuTodo += CrearSubMenu(itemMenu.DescripcionMenu, itemMenu.SubMenuOperacion,url);
                 } else {
-                    strMenuTodo += Menu(itemMenu);
+                    strMenuTodo += Menu(itemMenu,url);
                 }
             });
-            //$("#menuPrincipal").empty();
+            strMenuTodo += "<li><a href=\"" + url + "elmah.axd\" target=\"_blank\">Errores Aplicación</a></li>";
             $("#menuPrincipal").append(strMenuTodo);
-            localStorage.setItem('menu', strMenuTodo);
-            location.reload();
-            console.log(strMenuTodo);
+            sessionStorage.setItem('menu', strMenuTodo);
+            location.reload();            
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status);
@@ -39,25 +39,26 @@ function GenerarMenu() {
         }
     });
 }
-function Menu(itemMenu) {
-    var url = window.location.href;
+function Menu(itemMenu,url) {    
     var strMenu = '';
-    strMenu = "<li><a href=\" " + url + " /" + itemMenu.Controlador + "/" + itemMenu.Accion + "\">" + itemMenu.DescripcionMenu + "</a></li>";
+    strMenu = "<li><a href=\"" + url + itemMenu.Controlador + "/" + itemMenu.Accion + "\">" + itemMenu.DescripcionMenu + "</a></li>";
     return strMenu;
 }
 
-function CrearSubMenu(descripcionPrincipal, subMenu) {
+function CrearSubMenu(descripcionPrincipal, subMenu,url) {
     var strSubMenu = '';
-    var strItemMenu = '';
-    var url = window.location.href;
+    var strItemMenu = '';    
     strSubMenu = "<li class='dropdown'>";
     strSubMenu += "<a href= '#' class='dropdown-toggle' data-toggle='dropdown'>" + descripcionPrincipal + "<b class='caret'></b></a>";
     strSubMenu += "<ul class='dropdown-menu'>";
     $.each(subMenu, function (id, itemMenu) {
-        strItemMenu += "<li><a href=\" " + url + " /" + itemMenu.Controlador + "/" + itemMenu.Accion + "\">" + itemMenu.DescripcionOperacion + "</a></li>";
+        strItemMenu += "<li><a href=\"" + url + itemMenu.Controlador + "/" + itemMenu.Accion + "\">" + itemMenu.DescripcionOperacion + "</a></li>";
         console.log("Item sub Menu :" + itemMenu.DescripcionOperacion);
-    });
-    strItemMenu += "<li><a href=\"" + url + "/elmah.axd\">Errores Aplicación</a></li>";
+    });    
     strSubMenu += strItemMenu + "</ul></li>";
     return strSubMenu;
+}
+
+function ObtenerUrl(url) {
+    return url.replace('MenuDinamico/ObtenerItemMenu', '');
 }
