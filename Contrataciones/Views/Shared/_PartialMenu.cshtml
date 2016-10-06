@@ -1,37 +1,36 @@
-﻿
-@*@model IEnumerable<Contrataciones.Models.Menus>
+﻿@*@model IEnumerable<Contrataciones.Models.Menus>
 
-<ul id="menuPrincipal" class="nav navbar-nav">    
-    @foreach (var item in Model)
-    {
-        var subMenu = item.SubMenuOperaciones.Where(c => c.MenuID == item.MenuID).ToList();
-        if (subMenu == null)
+    <ul id="menuPrincipal" class="nav navbar-nav">
+        @foreach (var item in Model)
         {
-            <li>
-                @Html.ActionLink(item.DescripcionMenu, item.Accion, item.Controlador)
-            </li>
-        }
-        else
-        {
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">""<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    @foreach (var subMenuItem in subMenu)
-                    {
-                        <li>
-                            @Html.ActionLink(item.DescripcionMenu, item.Accion, item.Controlador)
-                        </li>
-                    }
+            var subMenu = item.SubMenuOperaciones.Where(c => c.MenuID == item.MenuID).ToList();
+            if (subMenu == null)
+            {
+                <li>
+                    @Html.ActionLink(item.DescripcionMenu, item.Accion, item.Controlador)
+                </li>
+            }
+            else
+            {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">""<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        @foreach (var subMenuItem in subMenu)
+                        {
+                            <li>
+                                @Html.ActionLink(item.DescripcionMenu, item.Accion, item.Controlador)
+                            </li>
+                        }
 
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            }
         }
-    }   
-</ul>*@
+    </ul>*@
 
 
 <ul id="menuPrincipal" class="nav navbar-nav">
-        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+    @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>
         <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
         <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
         <li class="dropdown">
@@ -50,8 +49,8 @@
                 <li>@Html.ActionLink("Barra de Ménu", "Index", "Menus")</li>
                 <li>@Html.ActionLink("Funciones o Sub menú", "Index", "SubMenuOperaciones")</li>
             </ul>
-        </li>
-    </ul>
+        </li>*@
+</ul>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/PartialMenu")

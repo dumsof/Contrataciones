@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
+
 
 namespace Contrataciones.Models
 {
@@ -62,7 +65,22 @@ namespace Contrataciones.Models
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
         [StringLength(200, ErrorMessage = "El campo {0} debe tener  entre {2} y {1} caracteres", MinimumLength = 3)]
+        [Remote("EmailExists", "Account",
+        HttpMethod = "POST", ErrorMessage = "El correo electronico ya existe.")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        [NotMapped]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar contraseña")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
 
 
         public virtual ICollection<Contratos> Contratos { get; set; }

@@ -48,12 +48,14 @@ namespace Contrataciones.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEmpleado,TipoDocumentoID,NumeroDocumento,Nombres,PrimerApellido,SegundoApellido,Direccion,Telefono,Celular,Email")] Empleados empleados)
+        public ActionResult Create([Bind(Include = "IdEmpleado,TipoDocumentoID,NumeroDocumento,Nombres,PrimerApellido,SegundoApellido,Direccion,Telefono,Celular,Email,Password,ConfirmPassword")] Empleados empleados)
         {
             if (ModelState.IsValid)
             {
                 db.Empleados.Add(empleados);
                 db.SaveChanges();
+                UsuariosMembershipController objM = new UsuariosMembershipController();
+                objM.InsertarUsuarioMemberschip(empleados);
                 return RedirectToAction("Index");
             }
 
@@ -82,12 +84,14 @@ namespace Contrataciones.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEmpleado,TipoDocumentoID,NumeroDocumento,Nombres,PrimerApellido,SegundoApellido,Direccion,Telefono,Celular,Email")] Empleados empleados)
+        public ActionResult Edit([Bind(Include = "IdEmpleado,TipoDocumentoID,NumeroDocumento,Nombres,PrimerApellido,SegundoApellido,Direccion,Telefono,Celular,Email,Password,ConfirmPassword")] Empleados empleados)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(empleados).State = EntityState.Modified;
                 db.SaveChanges();
+                UsuariosMembershipController objM = new UsuariosMembershipController();
+                objM.InsertarUsuarioMemberschip(empleados);
                 return RedirectToAction("Index");
             }
             ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentos, "TipoDocumentoID", "DescriptionDocumento", empleados.TipoDocumentoID);

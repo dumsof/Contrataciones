@@ -221,9 +221,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuDinamicoController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SubMenuOperacionesController.cs" />
     <Compile Include="Controllers\TipoDocumentosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\UsuariosMembershipController.cs" />
     <Compile Include="Controllers\Utilidades\SessionHelper.cs" />
     <Compile Include="Controllers\Utilidades\Utilidad.cs" />
     <Compile Include="Excepciones\ElmahHandleErrorAttribute.cs" />
@@ -350,10 +352,13 @@
     <Content Include="Views\SubMenuOperaciones\Details.cshtml" />
     <Content Include="Views\SubMenuOperaciones\Edit.cshtml" />
     <Content Include="Views\SubMenuOperaciones\Index.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\MenuDinamico\" />
     <Folder Include="Views\Menu\" />
+    <Folder Include="Views\UsuariosMembership\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

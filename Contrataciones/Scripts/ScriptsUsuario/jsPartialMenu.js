@@ -1,10 +1,10 @@
 ﻿$(function () {    
-    //var menu = sessionStorage.getItem('menu');
-    //if (menu != null && menu.length > 0) {
-    //    $("#menuPrincipal").append(menu);
-    //} else {
-    //    GenerarMenu();
-    //}
+    var menu = sessionStorage.getItem('menu');
+    if (menu != null && menu.length > 0) {
+        $("#menuPrincipal").append(menu);
+    } else {
+        GenerarMenu();
+    }
 });
 
 function GenerarMenu() {
