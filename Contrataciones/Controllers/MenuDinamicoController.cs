@@ -70,6 +70,9 @@ namespace Contrataciones.Controllers
 
                            };
 
+            //var lisPermiso = from s in listMenu.ToList()
+            //                 where !cnx.DenegarPermisos.Any(c => c.ControladorAccion.ToLower().Trim() == s.Controlador.ToLower().Trim() + "-" + s.Accion.ToLower().Trim())
+            //                 select s;
 
 
             return new JsonResult

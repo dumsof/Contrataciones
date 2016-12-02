@@ -24,9 +24,11 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
+                @Html.ActionLink("Denegar Permiso", "Index", "DenegarPermisos", new { id = item.RoleID }, null)
+               
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })*@
             </td>
         </tr>
     }

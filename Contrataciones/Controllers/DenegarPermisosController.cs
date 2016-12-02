@@ -46,7 +46,7 @@ namespace Contrataciones.Controllers
         /// <param name="controladorAccion"></param>
         /// <param name="permiso"></param>
         /// <returns></returns>
-        public JsonResult IngresarPermisoDenegado(string denegarPermisoId, string idRol, string descripcionMenu, string controladorAccion, string permiso)
+        public JsonResult IngresarPermisoDenegado(string denegarPermisoId, string idRol, string descripcionMenu, string controladorAccion)
         {
             int resultado = 0;
             string controlAccion = controladorAccion.Replace(@"\n", "").Trim();
