@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table id="tbDenegarPermiso" class="table">
     <tr>
         @*<th>
             @Html.DisplayNameFor(model => model.RolId)
@@ -29,18 +29,18 @@
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.RolId)
-        </td>*@
+        <td style = "display:none" >      
+            @item.RolId
+          
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.DescripcionMenu)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ControladorAccion)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Permiso)
-            <input type="checkbox" id="chkRolAsignado" checked="@item.Permiso" value="@item.RolId" />
+        <td>          
+            <input type="checkbox" id="chkDenegarPermiso" checked="@item.Permiso" value="@item.RolId" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.DenegarPermisoID }) |
@@ -51,3 +51,6 @@
 }
 
 </table>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/DenegarPermiso")

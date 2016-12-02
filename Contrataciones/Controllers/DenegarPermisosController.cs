@@ -1,6 +1,7 @@
 ﻿using Contrataciones.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,12 +15,73 @@ namespace Contrataciones.Controllers
         // GET: DenegarPermisos
         public ActionResult Index()
         {
+            return View(this.ObtenerOpcionesMenu());
+        }
+
+        /// <summary>
+        /// valida si la opcion se le denego el permiso, si ya esta registrada es porque se le denego el permiso para el rol.
+        /// </summary>
+        /// <param name="controladorAccion"></param>
+        /// <param name="idRol"></param>
+        /// <returns>retorna el autonumerico si existe la opcio en los permisos denegado</returns>
+        private int ExisteDatosDenegado(string controladorAccion, string idRol = "")
+        {
+            DenegarPermisos eDenegar = dbContrata.DenegarPermisos.Where(c => c.ControladorAccion.ToLower().Trim() == controladorAccion.ToLower().Trim()).FirstOrDefault();
+            if (eDenegar == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return eDenegar.DenegarPermisoID;
+            }
+        }
+
+        /// <summary>
+        /// permite ingresar la opcion a la cual se le denegara el permiso.
+        /// </summary>
+        /// <param name="denegarPermisoId"></param>
+        /// <param name="idRol"></param>
+        /// <param name="descripcionMenu"></param>
+        /// <param name="controladorAccion"></param>
+        /// <param name="permiso"></param>
+        /// <returns></returns>
+        public JsonResult IngresarPermisoDenegado(string denegarPermisoId, string idRol, string descripcionMenu, string controladorAccion, string permiso)
+        {
+            int resultado = 0;
+            string controlAccion = controladorAccion.Replace(@"\n", "").Trim();
+            DenegarPermisos eDenegarPermiso = new DenegarPermisos() { RolId = Convert.ToInt32(idRol), DescripcionMenu = descripcionMenu.Replace(@"\n", "").Trim(), ControladorAccion = controlAccion };
+
+            int idDenegarPermiso = ExisteDatosDenegado(controlAccion);
+            if (idDenegarPermiso > 0)
+            {
+                dbContrata.DenegarPermisos.RemoveRange(dbContrata.DenegarPermisos.Where(c => c.DenegarPermisoID == idDenegarPermiso));
+                resultado = dbContrata.SaveChanges();
+            }
+            else
+            {
+                dbContrata.DenegarPermisos.Add(eDenegarPermiso);
+                resultado = dbContrata.SaveChanges();
+            }
+            return new JsonResult
+            {
+                Data = resultado.ToString(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        /// <summary>
+        /// permite obtener las opciones de menu que tiene configurado el rol del usuario que esta navegando en la aplicacion
+        /// </summary>
+        /// <returns>retorna la lista de opciones que crean el menu</returns>
+        private List<DenegarPermisos> ObtenerOpcionesMenu()
+        {
             List<DenegarPermisos> listPermisoDenegado1 = (from me in dbContrata.Menus.ToList()
                                                           select new DenegarPermisos
                                                           {
                                                               DescripcionMenu = me.DescripcionMenu,
                                                               ControladorAccion = me.Controlador + "-" + me.Accion,
-                                                              Permiso = true
+                                                              Permiso = Convert.ToBoolean(ExisteDatosDenegado(me.Controlador + "-" + me.Accion))
 
                                                           }).ToList();
 
@@ -28,85 +90,29 @@ namespace Contrataciones.Controllers
                                                           {
                                                               DescripcionMenu = me.DescripcionOperacion,
                                                               ControladorAccion = me.Controlador + "-" + me.Accion,
-                                                              Permiso = true
+                                                              Permiso = Convert.ToBoolean(ExisteDatosDenegado(me.Controlador + "-" + me.Accion))
                                                           }).ToList();
 
             //union all para unificar menu principal y sub menu.
             List<DenegarPermisos> listResul = listPermisoDenegado1.Union(listPermisoDenegado2).ToList();
-
-            return View(listResul);
+            return listResul;
         }
 
-        // GET: DenegarPermisos/Details/5
-        public ActionResult Details(int id)
+        /// <summary>
+        /// liberar objeto que se encarga de la conexion con la base de datos.
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
         {
-            return View();
-        }
-
-        // GET: DenegarPermisos/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DenegarPermisos/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (disposing)
             {
-                // TODO: Add insert logic here
+                dbContrata.Dispose();
+                dbContrata = null;
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            base.Dispose(disposing);
         }
 
-        // GET: DenegarPermisos/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: DenegarPermisos/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DenegarPermisos/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DenegarPermisos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

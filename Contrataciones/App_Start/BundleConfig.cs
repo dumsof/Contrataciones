@@ -20,6 +20,8 @@ namespace Contrataciones
                        "~/Scripts/ScriptsUsuario/jsRolesVista.js"));
             bundles.Add(new ScriptBundle("~/bundles/PartialMenu").Include(
                        "~/Scripts/ScriptsUsuario/jsPartialMenu.js"));
+            bundles.Add(new ScriptBundle("~/bundles/DenegarPermiso").Include(
+                      "~/Scripts/ScriptsUsuario/jsDenegarPermisos.js"));
             //-----------------------------------
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará

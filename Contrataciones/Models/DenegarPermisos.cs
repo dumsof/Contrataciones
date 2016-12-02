@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -24,7 +25,8 @@ namespace Contrataciones.Models
 
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
         [Display(Name = "Permiso Denegado")]
-        public bool Permiso { get; set; }
+        [NotMapped]
+        public bool Permiso { get; set; } 
 
     }
 }

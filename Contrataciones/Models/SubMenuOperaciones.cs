@@ -38,7 +38,7 @@ namespace Contrataciones.Models
         [Required(ErrorMessage = "Usted debe ingresar {0}")]      
         [Range(1, 99)]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         public int OrdenamientoSubMenu { get; set; }
 
     }
