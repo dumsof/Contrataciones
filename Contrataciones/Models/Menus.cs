@@ -21,7 +21,7 @@ namespace Contrataciones.Models
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
         [StringLength(60, ErrorMessage = "El campo {0} debe tener  entre {2} y {1} caracteres", MinimumLength = 3)]
         public string Controlador { get; set; }
-
+       
         [Display(Name = "Acción")]
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
         [StringLength(60, ErrorMessage = "El campo {0} debe tener  entre {2} y {1} caracteres", MinimumLength = 3)]
@@ -33,7 +33,9 @@ namespace Contrataciones.Models
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
         [Range(1, 99)]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
+        //permite un numero entero con cero decimales.
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         public int Ordenamiento { get; set; }
     }
 }

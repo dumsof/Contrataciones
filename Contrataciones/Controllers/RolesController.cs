@@ -15,7 +15,7 @@ namespace Contrataciones.Controllers
         private ApplicationDbContext dbSeguridad = new ApplicationDbContext();
         // GET: Roles
         public ActionResult Index()
-        {            
+        {
             return View(ObtenerObjeto().ObtenerRoles());
         }
 
@@ -35,14 +35,20 @@ namespace Contrataciones.Controllers
         public ActionResult Create([Bind(Include = "RoleID,Name")] RolesVista rol)
         {
             if (ModelState.IsValid)
-            {                
-                ObtenerObjeto().AgregarRolMemberschip(rol.Name);                
+            {
+                ObtenerObjeto().AgregarRolMemberschip(rol.Name);
                 return RedirectToAction("Index");
             }
 
             //ViewBag.TipoDocumentoID = new SelectList(db.TipoDocumentos, "TipoDocumentoID", "DescriptionDocumento", empleados.TipoDocumentoID);
             return View(rol);
-        }        
+        }
+
+        public ActionResult RolesDenegarPermiso(string userID)
+        {
+
+            return View();
+        }
 
         /// <summary>
         /// permite crear una instancia del objeto de la clase que permite la administracion de los roles
@@ -50,7 +56,7 @@ namespace Contrataciones.Controllers
         /// <returns>retorna un objeto instanciado</returns>
         private UsuariosMembershipController ObtenerObjeto()
         {
-            return  new UsuariosMembershipController();
+            return new UsuariosMembershipController();
         }
     }
 }

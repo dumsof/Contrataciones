@@ -24,7 +24,7 @@ namespace Contrataciones.Models
         }
       
 
-        public System.Data.Entity.DbSet<Contrataciones.Models.Cargos> Cargos { get; set; }
+        public DbSet<Contrataciones.Models.Cargos> Cargos { get; set; }
 
         public System.Data.Entity.DbSet<Contrataciones.Models.TipoDocumentos> TipoDocumentos { get; set; }
 
@@ -35,5 +35,7 @@ namespace Contrataciones.Models
         public System.Data.Entity.DbSet<Contrataciones.Models.Menus> Menus { get; set; }
 
         public System.Data.Entity.DbSet<Contrataciones.Models.SubMenuOperaciones> SubMenuOperaciones { get; set; }
+
+        public DbSet<Contrataciones.Models.DenegarPermisos> DenegarPermisos { get; set; }
     }
 }

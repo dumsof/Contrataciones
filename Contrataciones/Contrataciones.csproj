@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ContratosController.cs" />
+    <Compile Include="Controllers\DenegarPermisosController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Models\Cargos.cs" />
     <Compile Include="Models\ContextContratacion.cs" />
     <Compile Include="Models\Contratos.cs" />
+    <Compile Include="Models\DenegarPermisos.cs" />
     <Compile Include="Models\Empleados.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -265,10 +267,8 @@
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\PublishProfiles\ColegioMayor.pubxml" />
+    <None Include="Properties\PublishProfiles\Contratacion.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -354,10 +354,10 @@
     <Content Include="Views\SubMenuOperaciones\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\DenegarPermisos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\MenuDinamico\" />
-    <Folder Include="Views\Menu\" />
     <Folder Include="Views\UsuariosMembership\" />
   </ItemGroup>
   <ItemGroup>
