@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Contrataciones.Models;
+using Contrataciones.Permisos;
 
 namespace Contrataciones.Controllers
 {
@@ -14,12 +15,14 @@ namespace Contrataciones.Controllers
     {
         private ContextContratacion db = new ContextContratacion();
 
+        [PermisoAttribute(Permiso = "Cargos-Index")]
         // GET: Cargos
         public ActionResult Index()
         {
             return View(db.Cargos.ToList());
         }
 
+        [PermisoAttribute(Permiso = "Cargos-Details")]
         // GET: Cargos/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,6 +38,7 @@ namespace Contrataciones.Controllers
             return View(cargos);
         }
 
+        [PermisoAttribute(Permiso = "Cargos-Create")]
         // GET: Cargos/Create
         public ActionResult Create()
         {
@@ -46,6 +50,7 @@ namespace Contrataciones.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PermisoAttribute(Permiso = "Cargos-Create")]
         public ActionResult Create([Bind(Include = "CargoID,DescripcionCargo")] Cargos cargos)
         {
             if (ModelState.IsValid)
@@ -59,6 +64,7 @@ namespace Contrataciones.Controllers
         }
 
         // GET: Cargos/Edit/5
+        [PermisoAttribute(Permiso = "Cargos-Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +84,7 @@ namespace Contrataciones.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PermisoAttribute(Permiso = "Cargos-Edit")]
         public ActionResult Edit([Bind(Include = "CargoID,DescripcionCargo")] Cargos cargos)
         {
             if (ModelState.IsValid)
@@ -90,6 +97,7 @@ namespace Contrataciones.Controllers
         }
 
         // GET: Cargos/Delete/5
+        [PermisoAttribute(Permiso = "Cargos-Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -9,8 +9,9 @@ namespace Contrataciones.Controllers.Utilidades
 {
     public enum SessionKey
     {
-        ARCHIVOS,
-        RETURN_URL
+        ARCHIVOS=1,
+        RETURN_URL=2,
+        ROLES_USUARIO=3
     }
     public class SessionHelper
     {

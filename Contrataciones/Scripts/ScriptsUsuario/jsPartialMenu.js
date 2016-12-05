@@ -5,7 +5,7 @@
             $("#menuPrincipal").append(menu);
         } else {
             GenerarMenu();
-            location.reload(false);
+            //location.reload(false);
         }
     }
 });

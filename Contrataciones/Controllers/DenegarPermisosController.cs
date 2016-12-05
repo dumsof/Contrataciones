@@ -45,7 +45,11 @@ namespace Contrataciones.Controllers
         /// <param name="descripcionMenu"></param>
         /// <param name="controladorAccion"></param>
         /// <param name="permiso"></param>
-        /// <returns></returns>
+        /// <returns>retorna el resultado de la transaccion mayor que 0 si es exitosa</returns>
+        //[Authorize]
+        [HttpPost]
+        [AllowAnonymous]
+        //[ValidateAntiForgeryToken]
         public JsonResult IngresarPermisoDenegado(string denegarPermisoId, string idRol, string descripcionMenu, string controladorAccion)
         {
             int resultado = 0;

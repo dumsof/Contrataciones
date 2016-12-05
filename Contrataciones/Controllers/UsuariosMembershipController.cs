@@ -77,5 +77,23 @@ namespace Contrataciones.Controllers
                                           }).ToList();
             return lVistaRol;
         }
+
+        /// <summary>
+        /// permite obtener los roles del usuario que esta navegando actualmente en el sitio.   
+        /// </summary>
+        /// <returns>retorna el nombre del rol y su id</returns>
+        public List<RolesVista> ObtenerRolesUsuarioActual()
+        {
+            List<RolesVista> listRoles = null;
+            if (User != null && !User.Identity.IsAuthenticated)
+            {
+                string idUsuario = User.Identity.GetUserId();
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbSeguridad));
+                List<string> rolesForUser = userManager.GetRoles(User.Identity.GetUserId()).ToList();
+                listRoles = ObtenerRoles();
+                listRoles = listRoles.Where(p => rolesForUser.Contains(p.Name)).ToList();
+            }
+            return listRoles;
+        }
     }
 }

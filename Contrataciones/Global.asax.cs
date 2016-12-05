@@ -24,6 +24,12 @@ namespace Contrataciones
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        protected void Session_End(object sender, EventArgs e)
+        {
+            Session.Abandon();          
+        }
+
+
         // <summary>
         /// poder centralizar capturar y enviar errores
         /// </summary>
