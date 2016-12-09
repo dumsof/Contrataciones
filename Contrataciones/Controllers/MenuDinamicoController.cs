@@ -95,7 +95,7 @@ namespace Contrataciones.Controllers
         public List<RolesVista> ObtenerRolesUsuario()
         {
             List<RolesVista> listRoles = new List<RolesVista>();
-            if (SessionHelper.Get<RolesVista>(Session, SessionKey.ROLES_USUARIO) == null)
+            if (SessionHelper.GetSession<RolesVista>(SessionKey.ROLES_USUARIO) == null)
             {
                 UsuariosMembershipController objUsua = new UsuariosMembershipController();
                 if (User != null && User.Identity.IsAuthenticated)
@@ -104,7 +104,7 @@ namespace Contrataciones.Controllers
                     List<string> rolesForUser = userManager.GetRoles(User.Identity.GetUserId()).ToList();
                     listRoles = objUsua.ObtenerRoles();
                     listRoles = listRoles.Where(p => rolesForUser.Contains(p.Name)).ToList();
-                    SessionHelper.Set(Session, SessionKey.ROLES_USUARIO, listRoles);
+                    SessionHelper.SetSession( SessionKey.ROLES_USUARIO, listRoles);
                 }
             }
             return listRoles;

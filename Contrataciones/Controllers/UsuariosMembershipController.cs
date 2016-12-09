@@ -1,4 +1,5 @@
-﻿using Contrataciones.Models;
+﻿using Contrataciones.Controllers.Utilidades;
+using Contrataciones.Models;
 using Contrataciones.ModelsView;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -94,6 +95,13 @@ namespace Contrataciones.Controllers
                 listRoles = listRoles.Where(p => rolesForUser.Contains(p.Name)).ToList();
             }
             return listRoles;
+        }
+
+        public List<string> ObtenerIdRoles()
+        {
+           var l= SessionHelper.Get<RolesVista>(Session, SessionKey.ROLES_USUARIO);
+            //List<string> listRoles = ObtenerRolesUsuario().Select(s => s.RoleID).ToList();
+            return null;
         }
     }
 }

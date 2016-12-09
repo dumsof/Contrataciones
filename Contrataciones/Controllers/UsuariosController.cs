@@ -60,6 +60,7 @@ namespace Contrataciones.Controllers
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbSeguridad));
             var rolesManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(dbSeguridad));
+            idRol = HttpUtility.UrlDecode(idRol);            //Server.UrlDecode(
             string nombreRolSeleccionado = rolesManager.Roles.ToList().Find(c => c.Id == idRol).Name;
             //var user = userManager.FindById(idUsuario);
 

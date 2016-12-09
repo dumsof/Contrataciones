@@ -1,4 +1,6 @@
-﻿using Contrataciones.Models;
+﻿using Contrataciones.Controllers.Utilidades;
+using Contrataciones.Models;
+using Contrataciones.ModelsView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,7 @@ namespace Contrataciones.Permisos
         {
             base.OnActionExecuting(filterContext);
             bool condicionNoTienePermiso = false;
+            var resul = SessionHelper.GetSession<RolesVista>(SessionKey.ROLES_USUARIO);
             DenegarPermisos eDenegar = db.DenegarPermisos.Where(c => c.ControladorAccion.ToLower().Trim() == this.Permiso.ToLower().Trim()).FirstOrDefault();
             if (eDenegar != null)
             {
