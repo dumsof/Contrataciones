@@ -58,7 +58,7 @@ namespace Contrataciones.Controllers
             idRol = HttpUtility.UrlDecode(idRol);
             descripcionMenu = HttpUtility.UrlDecode(descripcionMenu);
             controlAccion = HttpUtility.UrlDecode(controladorAccion);
-            DenegarPermisos eDenegarPermiso = new DenegarPermisos() { RolId = Convert.ToInt32(idRol), DescripcionMenu = descripcionMenu.Replace(@"\n", "").Trim(), ControladorAccion = controlAccion };
+            DenegarPermisos eDenegarPermiso = new DenegarPermisos() { RolId = Convert.ToInt32(idRol), DescripcionMenu = descripcionMenu.Replace(@"\n", "").Trim(), ControladorAccion = controlAccion.Replace(@"\n", "").Trim() };
 
             int idDenegarPermiso = ExisteDatosDenegado(controlAccion);
             if (idDenegarPermiso > 0)

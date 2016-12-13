@@ -62,7 +62,7 @@ namespace Contrataciones.Controllers
             //se crean modelos auxiliares para solucionar el error de referencia circular.
             //que se produce cuando dos modelos estan relacionados.
             List<MenuVista> listMenu = (from m in cnx.Menus
-                                        where !listPermisoDenegado.Contains(m.Controlador + "-" + m.Accion)
+                                        where !listPermisoDenegado.Contains((m.Controlador + "-" + m.Accion).Trim())
                                         select new MenuVista
                                         {
                                             MenuID = m.MenuID,
@@ -71,7 +71,7 @@ namespace Contrataciones.Controllers
                                             Accion = m.Accion,
                                             Url = url,
                                             SubMenuOperacion = (from subM in m.SubMenuOperaciones.Where(c => c.EsSubMenu)
-                                                                where !listPermisoDenegado.Contains(subM.Controlador + "-" + subM.Accion)
+                                                                where !listPermisoDenegado.Contains((subM.Controlador + "-" + subM.Accion).Trim())
                                                                 select new SubMenuOperacionesVista
                                                                 {
                                                                     DescripcionOperacion = subM.DescripcionOperacion,
@@ -104,7 +104,7 @@ namespace Contrataciones.Controllers
                     List<string> rolesForUser = userManager.GetRoles(User.Identity.GetUserId()).ToList();
                     listRoles = objUsua.ObtenerRoles();
                     listRoles = listRoles.Where(p => rolesForUser.Contains(p.Name)).ToList();
-                    SessionHelper.SetSession( SessionKey.ROLES_USUARIO, listRoles);
+                    SessionHelper.SetSession(SessionKey.ROLES_USUARIO, listRoles);
                 }
             }
             return listRoles;

@@ -1,9 +1,10 @@
 ﻿$(function () {
     $("input[type='checkbox']").click(function () {
+        var objUtilidad = new Utilidad();
         var idRol = 0;
         userID = $('#UserID').val();
         rolID = $(this).val();
-        nomDirecVirtual = ObtenerDirectorioVirtual();
+        nomDirecVirtual = objUtilidad.ObtenerDirectorioVirtual();
         $.ajax({
             type: 'POST',
             url: nomDirecVirtual + '/Usuarios/AgregarRol',
@@ -18,15 +19,7 @@
                 alert(thrownError);
             }
         });
-    });
-
-    function ObtenerDirectorioVirtual() {
-        var urlRuta = window.location.pathname;
-        var urlRutaSinPrimeraDiagonal = urlRuta.substring(1, urlRuta.length);
-        var posicionDirectorio = urlRutaSinPrimeraDiagonal.indexOf('/');
-        var respuesta = urlRuta.substring(0, posicionDirectorio + 1);
-        return respuesta;
-    }
+    });   
 
 });
 

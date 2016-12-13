@@ -292,6 +292,7 @@
     <Content Include="Scripts\ScriptsUsuario\jsDenegarPermisos.js" />
     <Content Include="Scripts\ScriptsUsuario\jsPartialMenu.js" />
     <Content Include="Scripts\ScriptsUsuario\jsRolesVista.js" />
+    <Content Include="Scripts\ScriptsUsuario\jsUtilidades.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
