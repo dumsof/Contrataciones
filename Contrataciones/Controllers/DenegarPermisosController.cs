@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Contrataciones.Controllers
 {
@@ -13,9 +14,12 @@ namespace Contrataciones.Controllers
         private ContextContratacion dbContrata = new ContextContratacion();
 
         // GET: DenegarPermisos
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(this.ObtenerOpcionesMenu());
+            var pageNumber = page ?? 1;
+            List<DenegarPermisos> lsDeneg = this.ObtenerOpcionesMenu();
+            //se agrega la paginación a la lista con la extension topagedlist.
+            return View(lsDeneg.ToPagedList(pageNumber, 5));
         }
 
         /// <summary>
@@ -53,14 +57,13 @@ namespace Contrataciones.Controllers
         public JsonResult IngresarPermisoDenegado(string denegarPermisoId, string idRol, string descripcionMenu, string controladorAccion)
         {
             int resultado = 0;
-            string controlAccion = controladorAccion.Replace(@"\n", "").Trim();
-            denegarPermisoId = HttpUtility.UrlDecode(denegarPermisoId);
-            idRol = HttpUtility.UrlDecode(idRol);
-            descripcionMenu = HttpUtility.UrlDecode(descripcionMenu);
-            controlAccion = HttpUtility.UrlDecode(controladorAccion);
-            DenegarPermisos eDenegarPermiso = new DenegarPermisos() { RolId = Convert.ToInt32(idRol), DescripcionMenu = descripcionMenu.Replace(@"\n", "").Trim(), ControladorAccion = controlAccion.Replace(@"\n", "").Trim() };
+            denegarPermisoId = denegarPermisoId.Replace(@"\n", "").Trim();
+            controladorAccion = controladorAccion.Replace(@"\n", "").Trim();
+            descripcionMenu = descripcionMenu.Replace(@"\n", "").Trim();
 
-            int idDenegarPermiso = ExisteDatosDenegado(controlAccion);
+            DenegarPermisos eDenegarPermiso = new DenegarPermisos() { RolId = idRol, DescripcionMenu = descripcionMenu.Replace(@"\n", "").Trim(), ControladorAccion = controladorAccion };
+
+            int idDenegarPermiso = ExisteDatosDenegado(controladorAccion);
             if (idDenegarPermiso > 0)
             {
                 dbContrata.DenegarPermisos.RemoveRange(dbContrata.DenegarPermisos.Where(c => c.DenegarPermisoID == idDenegarPermiso));
@@ -103,6 +106,7 @@ namespace Contrataciones.Controllers
 
             //union all para unificar menu principal y sub menu.
             List<DenegarPermisos> listResul = listPermisoDenegado1.Union(listPermisoDenegado2).ToList();
+
             return listResul;
         }
 

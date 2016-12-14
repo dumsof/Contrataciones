@@ -24,6 +24,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.ActionLink("Asignar Usuarios", "Index", "Usuarios", new { id = item.RoleID }, null) |
                 @Html.ActionLink("Denegar Permiso", "Index", "DenegarPermisos", new { id = item.RoleID }, null)
                
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |

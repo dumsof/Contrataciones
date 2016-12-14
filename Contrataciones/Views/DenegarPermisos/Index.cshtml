@@ -1,57 +1,59 @@
-﻿@model IEnumerable<Contrataciones.Models.DenegarPermisos>
+﻿@model PagedList.IPagedList<Contrataciones.Models.DenegarPermisos>
 
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Denegar Permisos Rol";
+    ViewBag.Title = "Denegar Permisos x Rol";
 }
 
-<h2>Denegar Permisos Rol</h2>
+<h2>Denegar Permisos x Rol</h2>
 
 <input type="hidden" id="RolID" value="@ViewContext.RouteData.Values["id"]" />
+<br/>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table id="tbDenegarPermiso" class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.RolId)
-        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.DescripcionMenu)
+            Descripción Menu
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ControladorAccion)
+            Controlador Acción
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Permiso)
-            
+            Permiso
         </th>
         <th></th>
     </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="display:none">
+                @item.RolId
 
-@foreach (var item in Model) {
-    <tr>
-        <td style = "display:none" >      
-            @item.RolId
-          
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescripcionMenu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ControladorAccion)
-        </td>
-        <td>          
-            <input type="checkbox" id="chkDenegarPermiso" checked="@item.Permiso" value="@item.RolId" />
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DenegarPermisoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DenegarPermisoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DenegarPermisoID })
-        </td>*@
-    </tr>
-}
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.DescripcionMenu)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.ControladorAccion)
+            </td>
+            <td>
+                <input type="checkbox" id="chkDenegarPermiso" checked="@item.Permiso" value="@item.RolId" />
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/DenegarPermiso")

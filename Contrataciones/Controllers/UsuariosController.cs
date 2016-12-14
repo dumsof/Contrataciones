@@ -13,19 +13,34 @@ namespace Contrataciones.Controllers
     public class UsuariosController : Controller
     {
         private ApplicationDbContext dbSeguridad = new ApplicationDbContext();
+        private ContextContratacion ccn = new ContextContratacion();
         // GET: Usuarios
         public ActionResult Index()
         {
             //poder obtener los usuarios de las tablas memberchid
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbSeguridad));
             //se obtiene la informacion de la tabla usuarios y se pasa al modelo de vista para poder pintar en la pagina.
-            List<UsuarioVista> lvistaUsuario = (from u in userManager.Users.ToList()
+            //List<UsuarioVista> lvistaUsuario = (from u in userManager.Users.ToList()
+            //                                    select new UsuarioVista
+            //                                    {
+            //                                        UserID = u.Id,
+            //                                        Name = ccn.Empleados.Where(c => c.Email.ToLower().Trim() == u.Email.ToLower().Trim()).Select(s => s.Nombres + " " + s.PrimerApellido + " " + s.SegundoApellido).FirstOrDefault(),
+            //                                        Email = u.Email
+            //                                    }).ToList();
+
+            //realizar un join para que sea mas rapido lo de arriba.
+            List<UsuarioVista> lvistaUsuario = (from U in userManager.Users.ToList()
+                                                join E in ccn.Empleados.ToList() on U.Email.ToLower().Trim() equals E.Email.ToLower().Trim()
                                                 select new UsuarioVista
                                                 {
-                                                    UserID = u.Id,
-                                                    Name = u.UserName,
-                                                    Email = u.Email
+                                                    UserID = U.Id,
+                                                    Name = E.Nombres + " " + E.PrimerApellido + " " + E.SegundoApellido + " - " + E.NumeroDocumento,
+                                                    Email = U.Email
                                                 }).ToList();
+
+
+
+
             return View(lvistaUsuario);
         }
 
@@ -67,7 +82,7 @@ namespace Contrataciones.Controllers
             if (userManager.IsInRole(idUsuario, nombreRolSeleccionado))
             {
                 //remover asignacion de la tbla AspNetUserRoles
-                var remFromRole =  userManager.RemoveFromRole(idUsuario, nombreRolSeleccionado);
+                var remFromRole = userManager.RemoveFromRole(idUsuario, nombreRolSeleccionado);
             }
             else
             {

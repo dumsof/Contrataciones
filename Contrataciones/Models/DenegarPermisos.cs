@@ -13,7 +13,7 @@ namespace Contrataciones.Models
         public int DenegarPermisoID { get; set; }
 
         [Required(ErrorMessage = "Usted debe ingresar {0}")]
-        public int RolId { get; set; }
+        public string RolId { get; set; }
 
         [Required(ErrorMessage = "Usted debe ingresar {0}")]        
         [Display(Name = "Descripción Menu")]
