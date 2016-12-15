@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contrataciones.ModelsView
 {
@@ -13,5 +14,8 @@ namespace Contrataciones.ModelsView
         public string Email { get; set; }
 
         public List<RolesVista> Roles { get; set; }
+
+        [NotMapped]
+        public bool Asignado { get; set; }
     }
 }

@@ -18,6 +18,17 @@ namespace Contrataciones
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                        name: "AsignarUsuario",
+                        url: "Usuarios/Index/{id}/{nombreRol}",
+                        defaults: new
+                        {
+                            controller = "Usuarios",
+                            action = "Index",
+                            id = UrlParameter.Optional,
+                            nombreRol = UrlParameter.Optional
+                        });
         }
     }
 }

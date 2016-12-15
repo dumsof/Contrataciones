@@ -2,10 +2,15 @@
 @{
     ViewBag.Title = "Administrar permisos";
 }
+
+
 <input type="hidden" id="RolID" value="@ViewContext.RouteData.Values["id"]" />
 
-<h2>Administrar Permisos</h2>
 
+<h2>Administrar Permisos</h2>
+<br/>
+<h4>Rol Selecionado : @(ViewContext.RouteData.Values["nombreRol"])</h4>
+<br />
 <table class="table">
 
     <tr>

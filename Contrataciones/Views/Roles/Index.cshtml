@@ -9,14 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
-
+<table class="table table-hover">
+    <thead class="thead-default">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr>
@@ -24,12 +25,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Asignar Usuarios", "Index", "Usuarios", new { id = item.RoleID }, null) |
-                @Html.ActionLink("Denegar Permiso", "Index", "DenegarPermisos", new { id = item.RoleID }, null)
-               
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.RoleID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.RoleID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.RoleID })*@
+                @*para este link se utiliza la ruta configurada en el archivo routes con el nombre de AsignarUsuario*@
+                @Html.RouteLink("Asignar Usuarios", "AsignarUsuario", new { id = item.RoleID, nombreRol = item.Name }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Denegar Permiso", "Index", "DenegarPermisos", new { id = item.RoleID },  new { @class = "ui-btn-right" }) |              
+
             </td>
         </tr>
     }

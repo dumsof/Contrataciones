@@ -5,9 +5,9 @@
         var urlRutaSinPrimeraDiagonal = urlRuta.substring(1, urlRuta.length);
         var posicionDirectorio = urlRutaSinPrimeraDiagonal.indexOf('/');
         var respuesta = urlRuta.substring(0, posicionDirectorio + 1)+'/';
-        return respuesta;
+        //return respuesta;
         //local 
-        //return '/';
+        return '/';
     }
 
     this.getRootWebSitePath = function () {
