@@ -15,7 +15,7 @@ namespace Contrataciones.ModelsView
 
         public List<RolesVista> Roles { get; set; }
 
-        [NotMapped]
+        //[NotMapped]
         public bool Asignado { get; set; }
     }
 }

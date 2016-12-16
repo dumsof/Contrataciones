@@ -21,12 +21,12 @@ namespace Contrataciones
 
             routes.MapRoute(
                         name: "AsignarUsuario",
-                        url: "Usuarios/Index/{id}/{nombreRol}",
+                        url: "Usuarios/Index/{idRol}/{nombreRol}",
                         defaults: new
                         {
                             controller = "Usuarios",
                             action = "Index",
-                            id = UrlParameter.Optional,
+                            idRol = UrlParameter.Optional,
                             nombreRol = UrlParameter.Optional
                         });
         }

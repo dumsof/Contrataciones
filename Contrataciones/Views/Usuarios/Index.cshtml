@@ -4,19 +4,22 @@
 }
 
 
-<input type="hidden" id="RolID" value="@ViewContext.RouteData.Values["id"]" />
+<input type="hidden" id="RolID" value="@ViewContext.RouteData.Values["idRol"]" />
 
 
 <h2>Administrar Permisos</h2>
-<br/>
+<br />
 <h4>Rol Selecionado : @(ViewContext.RouteData.Values["nombreRol"])</h4>
 <br />
-<table class="table">
+<table id="tbAsignarUsuarios" class="table">
 
     <tr>
         <th>
+            Selección
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
-        </th>    
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -29,6 +32,9 @@
     {
         <tr>
             <td>
+                <input type="checkbox" id="chkAsignarUsuario" checked="@item.Asignado" value="@item.UserID" />
+            </td>
+            <td>
                 @Html.DisplayFor(model => item.Name)
             </td>
 
@@ -36,8 +42,10 @@
                 @Html.DisplayFor(model => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Roles", "Roles", new { userID = item.UserID }) 
+                @Html.ActionLink("Roles", "Roles", new { userID = item.UserID })
             </td>
         </tr>
     }
 </table>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ScriptUsuario")  

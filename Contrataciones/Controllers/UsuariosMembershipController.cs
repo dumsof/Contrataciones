@@ -3,6 +3,7 @@ using Contrataciones.Models;
 using Contrataciones.ModelsView;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,20 @@ namespace Contrataciones.Controllers
     public class UsuariosMembershipController : Controller
     {
         private ApplicationDbContext dbSeguridad = new ApplicationDbContext();
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         /// <summary>
         /// permite ingresar los datos a la tabla de usuario de meberschip
@@ -24,6 +37,9 @@ namespace Contrataciones.Controllers
         /// <returns>retorna verdadero si la informacion se ingreso correctamente</returns>
         public bool InsertarUsuarioMemberschip(Empleados empleado)
         {
+            //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            //var result = await UserManager.CreateAsync(user, model.Password);
+
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbSeguridad));
             var rolesManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(dbSeguridad));
             bool resul = false;
@@ -33,10 +49,9 @@ namespace Contrataciones.Controllers
                 user = new ApplicationUser()
                 {
                     Email = empleado.Email,
-                    UserName = empleado.Email,
-                    PasswordHash = empleado.Password
+                    UserName = empleado.Email
                 };
-                resul = userManager.Create(user).Succeeded;
+                resul = userManager.Create(user, empleado.Password).Succeeded;
             }
             return resul;
         }

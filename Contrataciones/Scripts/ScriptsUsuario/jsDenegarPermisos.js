@@ -7,17 +7,8 @@
         var $trCheckSeleccionado = $(this).closest('tr');
         var denegarPermisoId = $trCheckSeleccionado.find('td:nth-child(1)').text();
         var descripcionMenu = $trCheckSeleccionado.find('td:nth-child(2)').text();
-        var controladorAccion = $trCheckSeleccionado.find('td:nth-child(3)').text();
-        //var datoPermiso = { denegarPermisoId: denegarPermisoId, idRol: idRol, descripcionMenu: descripcionMenu, controladorAccion: controladorAccion };
-        var nomDirecVirtual = objUtilidad.ObtenerDirectorioVirtual();
-        //console.log(objUtilidad.ObtenerDirectorioVirtual());
-        //console.log(objUtilidad.getRootWebSitePath());
-        //console.log('Pagina:'+nomDirecVirtual);
-        //'@Url.Action("ControllerName", "ActionName")'
-        //url: '@Url.Action("DenegarPermisos", "IngresarPermisoDenegado")',
-        //'/DenegarPermisos/IngresarPermisoDenegado',
-        //
-        //data:JSON.stringify(datoPermiso),
+        var controladorAccion = $trCheckSeleccionado.find('td:nth-child(3)').text();        
+        var nomDirecVirtual = objUtilidad.ObtenerDirectorioVirtual();       
         $.ajax({
             type: 'POST',
             url: nomDirecVirtual + 'DenegarPermisos/IngresarPermisoDenegado',
