@@ -1,6 +1,19 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Home Page";
 }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var isRequestAuthenticated = '@Request.IsAuthenticated'.toLowerCase();        
+        //permite borrar los datos del menu almacenado en sessionStorage.getItem('menu'),  esto con el fin de actualizar si el usuario realiza un cambio.
+        if (isRequestAuthenticated === 'false' || isRequestAuthenticated == 'falso') {
+            //localStorage.removeItem('menu');
+            sessionStorage.clear();           
+        }       
+    });
+</script>
+<input type="hidden" id="hdEstaUtentificado" value="@Request.IsAuthenticated"/>
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

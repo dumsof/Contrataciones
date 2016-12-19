@@ -7,7 +7,8 @@
         var respuesta = urlRuta.substring(0, posicionDirectorio + 1)+'/';
         return respuesta;
         //local 
-        //return '/';
+        //return '/'; //casa
+        //return ''; //IG
     }
 
     this.getRootWebSitePath = function () {

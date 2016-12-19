@@ -19,7 +19,7 @@
                 if (data == '1') {
                     alert('Permiso modificado con éxito');
                 } else {
-                    alert('El permiso no fue modificado.');
+                    alert('El permiso no fue modificado, por favor verifique.');
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {

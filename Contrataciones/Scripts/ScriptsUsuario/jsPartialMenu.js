@@ -4,8 +4,7 @@
         if (menu != null && menu.length > 0) {
             $("#menuPrincipal").append(menu);
         } else {
-            GenerarMenu();
-            //location.reload(false);
+            GenerarMenu();           
         }
     }
 });
